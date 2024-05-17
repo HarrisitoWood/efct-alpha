@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <H1>CALLS</H1>
+        <div class="nav">
+            <a href="home.html" class="navItem">HOME</a>
+            <div class="vertical"></div>
+            <a href="main.html" class="navItem">SELECTION</a>
+            <div class="vertical"></div>
+            <a href="featured.html" class="navItem">FEATURED</a>
+            <div class="vertical"></div>
+            <a href="calls.html" class="navItem">CALLS</a>
+        </div>
+        <div style="padding-top: 15px;">
+            <div class="job">
+                <div class="jobTitle"></div>
+                <div class="jobTags"></div>
+                <div class="jobDetail"></div>
+                <div class="jobTime"></div>
+                <div class="jobPlace"></div>
+                <div class="jobPay"></div>
+            </div>
+            <div class="job">
+                <div class="jobTitle"></div>
+                <div class="jobTags"></div>
+                <div class="jobDetail"></div>
+                <div class="jobTime"></div>
+                <div class="jobPlace"></div>
+                <div class="jobPay"></div>
+            </div>
+            <div class="job">
+                <div class="jobTitle"></div>
+                <div class="jobTags"></div>
+                <div class="jobDetail"></div>
+                <div class="jobTime"></div>
+                <div class="jobPlace"></div>
+                <div class="jobPay"></div>
+            </div>
+            <div class="job">
+                <div class="jobTitle"></div>
+                <div class="jobTags"></div>
+                <div class="jobDetail"></div>
+                <div class="jobTime"></div>
+                <div class="jobPlace"></div>
+                <div class="jobPay"></div>
+            </div>
+        </div>
+        <button class="filter"></button>
+        <button class="submit" onclick="showItem()">SUBMIT</button>
+
+        <div id="submit" class="contact">
+            <div class="contactL" style="width: 50%; margin: auto; align-items: center;">JOB</div>
+            <div class="contactL">
+                <label for="details">DETAILS:</label>
+                <input type="text" id="details" name="details">
+            </div>
+            <div>
+                <label for="date">DATE:</label>
+                <input type="text" id="date" name="date">
+            </div>
+            <div>
+                <label for="time">TIME:</label>
+                <input type="text" id="time" name="time">
+            </div>
+            <div class="contactL">
+                <label for="place">PLACE:</label>
+                <input type="text" id="place" name="place">
+            </div>
+            <div class="contactL" style="padding: 0; padding-top: 10px;"><button class="bookContact">SUBMIT</button></div>
+        </div>
+        <button id = "cancel" class="cancel" onclick="hideItem()">X</button>
+
+        <script>
+            function showItem(){
+                document.getElementById("submit").style.display = "grid";
+                document.getElementById("cancel").style.display = "block";
+            }
+
+            function hideItem(){
+                document.getElementById("submit").style.display = "none";
+                document.getElementById("cancel").style.display = "none";
+            }
+        </script>
+
+    </body>
+</html>

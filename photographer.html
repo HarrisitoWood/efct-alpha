@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body style="display: flex; flex-direction: column;">
+        <h1>PHOTOGRAPHER</h1>
+        <div id="artCard" class="artistBox">    
+            <div class="artistArea"></div>
+            <div class="artistName"></div>
+            <div class="artistFee"></div>
+        </div>
+        
+        <form action="formhandler.php" id="bookDiv" class="contact" method="POST">
+            <div class="contactL" style="width: 50%; margin: auto; align-items: center;">JOB</div>
+            <div class="contactL">
+                <label for="details">DETAILS:</label>
+                <input type="text" id="details" name="details" required>
+            </div>
+            <div>
+                <label for="date">DATE:</label>
+                <input type="date" id="date" name="date" required>
+            </div>
+            <div>
+                <label for="time">TIME:</label>
+                <input type="time" id="time" name="time" required>
+            </div>
+            <div class="contactL">
+                <label for="place">PLACE:</label>
+                <input type="text" id="place" name="place" required>
+            </div>
+            <div class="contactL" style="padding: 0; padding-top: 10px;">
+                <button class="bookContact" type="submit" value="Submit">BOOK</button>
+            </div>
+        </form>
+        <button id = "cancel" class="cancel" onclick="hideBook()">X</button>
+
+        <div id="galleryBox" class="galleryBox">
+            <div class="gallery">
+                <div id="#1" class="photo" style="height: 100px; background-color: rgb(195, 0, 52);" onclick="viewPhoto(this.id)"></div>
+                <div id="#4" class="photo" style="height: 400px;" onclick="viewPhoto(this.id)"></div>
+                <div id="#7" class="photo" style="height: 200px; background-color: rgb(195, 0, 52);" onclick="viewPhoto(this.id)"></div>
+                <div id="#10" class="photo" style="height: 200px;" onclick="viewPhoto(this.id)"></div>
+                <div id="#13" class="photo" style="height: 200px;" onclick="viewPhoto(this.id)"></div>
+                <div id="#16" class="photo" style="height: 400px; background-color: rgb(195, 0, 52);" onclick="viewPhoto(this.id)"></div>
+                <div id="#19" class="photo" style="height: 100px;" onclick="viewPhoto(this.id)"></div>
+                <div id="#22" class="photo" style="height: 200px;" onclick="viewPhoto(this.id)"></div>
+            </div>
+            <div class="gallery">
+                <div id="#2" class="photo" style="height: 400px;" onclick="viewPhoto(this.id)"></div>
+                <div id="#5" class="photo" style="height: 50px;" onclick="viewPhoto(this.id)"></div>
+                <div id="#8" class="photo" style="height: 300px;" onclick="viewPhoto(this.id)"></div>
+                <div id="#11" class="photo" style="height: 250px; background-color: rgb(195, 0, 52);" onclick="viewPhoto(this.id)"></div>
+                <div id="#14" class="photo" style="height: 100px;" onclick="viewPhoto(this.id)"></div>
+                <div id="#17" class="photo" style="height: 400px;" onclick="viewPhoto(this.id)"></div>
+                <div id="#20" class="photo" style="height: 200px;" onclick="viewPhoto(this.id)"></div>
+            </div>
+            <div class="gallery">
+                <div id="#3" class="photo" style="height: 200px; background-color: rgb(195, 0, 52);" onclick="viewPhoto(this.id)"></div>
+                <div id="#6" class="photo" style="height: 400px;" onclick="viewPhoto(this.id)"></div>
+                <div id="#9" class="photo" style="height: 100px; background-color: rgb(195, 0, 52);" onclick="viewPhoto(this.id)"></div>
+                <div id="#12" class="photo" style="height: 400px;" onclick="viewPhoto(this.id)"></div>
+                <div id="#15" class="photo" style="height: 50px;" onclick="viewPhoto(this.id)"></div>
+                <div id="#18" class="photo" style="height: 300px; background-color: rgb(195, 0, 52);" onclick="viewPhoto(this.id)"></div>
+                <div id="#21" class="photo" style="height: 250px;" onclick="viewPhoto(this.id)"></div>
+            </div>
+        </div>
+
+        <div id="fullPhoto" class="fullPhoto">
+            <button id="photoCancel" class="photoCancel" onclick="noView()">X</button>
+        </div>
+
+        <button  id="bookButton" class="book" onclick="showBook()">BOOK</button>
+
+        <script>
+            document.addEventListener("keydown", (ev)=>{
+                if(ev.key == 27){
+                    noView();
+                    hideBook();
+                }
+            })
+
+            function showBook(){
+                document.getElementById("bookDiv").style.display = "grid";
+                document.getElementById("cancel").style.display = "block";
+                var card = document.getElementById("artCard");
+                var gallery = document.getElementById("galleryBox");
+                var button = document.getElementById("bookButton");
+                card.style.filter = "blur(10px)";
+                gallery.style.filter = "blur(10px)";
+                button.style.filter = "blur(10px)";
+            }
+
+            function hideBook(){
+                document.getElementById("bookDiv").style.display = "none";
+                document.getElementById("cancel").style.display = "none";
+                document.getElementById("artCard").style.filter = "blur(0px)";
+                document.getElementById("galleryBox").style.filter = "blur(0px)";
+                document.getElementById("bookButton").style.filter = "blur(0px)";
+            }
+
+            function noView(){
+                document.getElementById("fullPhoto").style.width = 10 + "px"
+                document.getElementById("fullPhoto").style.height = 10 + "px"
+                document.getElementById("fullPhoto").style.backgroundColor = "transparent"
+                document.getElementById("fullPhoto").style.display = "none";
+                document.getElementById("photoCancel").style.display = "none";
+                document.getElementById("artCard").style.filter = "blur(0px)";
+                document.getElementById("galleryBox").style.filter = "blur(0px)";
+                document.getElementById("bookButton").style.filter = "blur(0px)";
+                document.getElementById("bookButton").disabled = false;
+                
+            }
+
+            function viewPhoto(id) {
+                var fullPhoto = document.getElementById("fullPhoto");
+                var photoCancel = document.getElementById("photoCancel");
+
+                fullPhoto.style.display = "flex";
+                photoCancel.style.display = "flex";
+                
+                var photo = document.getElementById(id);
+                var color = window.getComputedStyle(photo).backgroundColor;
+                var width = photo.offsetWidth;
+                var height = photo.offsetHeight;
+
+                var card = document.getElementById("artCard");
+                var gallery = document.getElementById("galleryBox");
+                var button = document.getElementById("bookButton");
+                card.style.filter = "blur(10px)";
+                gallery.style.filter = "blur(10px)";
+                button.style.filter = "blur(10px)";
+
+                var photoX = document.getElementById("fullPhoto");
+                photoX.style.backgroundColor = color;
+                photoX.style.height = height + "px";
+                photoX.style.width = width + "px";
+                
+                var scale = 1.7;
+                
+                photoX.style.transform = "translate(-50%, -50%) scale(" + scale + ")";
+
+                button.disabled = true;
+            }
+        </script>
+
+    </body>
+</html>
